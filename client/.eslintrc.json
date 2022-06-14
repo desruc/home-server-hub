@@ -6,6 +6,8 @@
   "extends": [
     "plugin:react/recommended",
     "airbnb",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
@@ -16,11 +18,13 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "plugins": ["react", "@typescript-eslint", "prettier", "import"],
   "rules": {
-    // "global-require": "warn",
-    // "import/prefer-default-export": 0,
-    // "import/extensions": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }],
+    "react/react-in-jsx-scope": 0,
+    "global-require": "warn",
+    "import/prefer-default-export": 0,
+    "import/extensions": 0,
     "prettier/prettier": [
       "error",
       {
@@ -32,5 +36,15 @@
         "trailingComma": "none"
       }
     ]
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "project": "./tsconfig.json"
+      }
+    }
   }
 }

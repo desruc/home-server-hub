@@ -1,7 +1,7 @@
 import "module-alias/register";
 import "dotenv/config";
 
-import databaseConnection from "./database";
+import { databaseConnection } from "./database";
 import getServer from "./core/app";
 
 const initialzeApp = async () => {
