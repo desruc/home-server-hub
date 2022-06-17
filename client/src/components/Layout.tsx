@@ -9,7 +9,9 @@ function Layout({ children }: LayoutProps) {
   return (
     <div className="bg-background min-h-screen">
       <Header />
-      <main className="pt-8 container mx-auto">{children}</main>
+      <div className="px-4 pt-6">
+        <main className="container mx-auto">{children}</main>
+      </div>
     </div>
   );
 }
