@@ -8,6 +8,9 @@ export default () => {
   return defineConfig({
     envDir: "./env",
     plugins: [react()],
+    server: {
+      port: 3001
+    },
     css: {
       postcss
     }

@@ -1,6 +1,6 @@
 export interface Application {
   group: string;
-  image: string;
+  icon: string;
   title: string;
   link: string;
 }
@@ -10,7 +10,7 @@ interface ApplicationListItemProps {
 }
 
 function ApplicationListItem({ application }: ApplicationListItemProps) {
-  const { link, image, title } = application;
+  const { link, icon, title } = application;
   return (
     <li className="mb-4">
       <a
@@ -21,12 +21,16 @@ function ApplicationListItem({ application }: ApplicationListItemProps) {
         rel="noreferrer"
       >
         <div className="flex">
-          <img src={image} alt="app-icon" className="h-14 w-14" />
+          <img
+            src={icon || "/placeholder-icon.png"}
+            alt="app-icon"
+            className="h-14 w-14 rounded-md"
+          />
           <div className="ml-4">
             <h4 className="text-heading group-hover:text-primary transition-colors break-words">
               {title}
             </h4>
-            <p className="uppercase text-xs font-bold">{link}</p>
+            <p className="text-xs font-bold">{link}</p>
           </div>
         </div>
       </a>

@@ -1,13 +1,15 @@
 import { groupBy } from "lodash";
+import useSWR from "swr";
 import ApplicationList from "./components/ApplicationList";
 import { Application } from "./components/ApplicationListItem";
 import Layout from "./components/Layout";
 
 function App() {
-  // TODO: API call to get groups
-  const apps: Application[] = [];
+  const { data } = useSWR<Application[]>(
+    `${import.meta.env.VITE_API_BASE_ROUTE}/apps`
+  );
 
-  const groupedApps = groupBy(apps, (a) => a.group);
+  const groupedApps = groupBy(data, (a) => a.group);
 
   return (
     <Layout>

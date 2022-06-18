@@ -9,7 +9,7 @@ interface ApplicationListProps {
 function ApplicationList({ group, applications }: ApplicationListProps) {
   return (
     <div className="mb-6">
-      <h3 className="mb-4">{group}</h3>
+      <p className="text-sm mb-4 text-paragraph uppercase font-bold">{group}</p>
       <ul>
         {applications.map((a) => (
           <ApplicationListItem key={a.link} application={a} />
