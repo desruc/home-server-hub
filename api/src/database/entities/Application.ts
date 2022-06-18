@@ -1,18 +1,28 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+
+export interface IApplication {
+  title: string;
+  link: string;
+  icon?: string;
+  group: string;
+}
 
 @Entity()
-export class Application {
-  @PrimaryColumn()
-  id: string;
+class Application {
+  @PrimaryGeneratedColumn("increment")
+  id: number;
 
   @Column()
-  name: string;
+  title: string;
 
   @Column()
   link: string;
 
-  @Column()
+  @Column({ default: "" })
   icon: string;
+
+  @Column()
+  group: string;
 }
 
 export default Application;
