@@ -5,13 +5,22 @@ services:
     build: ./api
     container_name: server-hub-api
     environment:
-    - DB_HOST=postgres
-    - DB_PORT=5432
-    - DB_USERNAME=root
-    - DB_PASSWORD=password
-    - DB_DATABASE=root
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USERNAME=root
+      - DB_PASSWORD=password
+      - DB_DATABASE=root
     ports:
       - "8000:8000"
+
+  seq-server:
+    image: datalust/seq:latest
+    container_name: seq-server
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - "5342:80"
+      - "5341:5341"
 
   postgres:
     container_name: server-hub-postgresdb
@@ -34,11 +43,11 @@ services:
       PGADMIN_DEFAULT_PASSWORD: admin
       PGADMIN_CONFIG_SERVER_MODE: 'False'
     volumes:
-       - pgadmin:/var/lib/pgadmin
+      - pgadmin:/var/lib/pgadmin
     ports:
       - "5050:80"
     restart: on-failure
 
 volumes:
-    postgres:
-    pgadmin:
+  postgres:
+  pgadmin:
