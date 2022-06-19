@@ -18,7 +18,7 @@ class Application {
   @Column()
   link: string;
 
-  @Column({ default: "icon" })
+  @Column({ default: "" })
   icon: string;
 
   @Column()

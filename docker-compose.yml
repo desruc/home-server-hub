@@ -1,6 +1,18 @@
 version: '3.7'
 
 services:
+  server-hub-api:
+    build: ./api
+    container_name: server-hub-api
+    environment:
+    - DB_HOST=postgres
+    - DB_PORT=5432
+    - DB_USERNAME=root
+    - DB_PASSWORD=password
+    - DB_DATABASE=root
+    ports:
+      - "8000:8000"
+
   postgres:
     container_name: server-hub-postgresdb
     image: postgres:10.5
@@ -10,9 +22,7 @@ services:
       - POSTGRES_PASSWORD=password
       - APP_DB_USER=db_user
       - APP_DB_PASS=password
-      - APP_DB_NAME=server-hub
-    volumes:
-      - ./docker-db-scripts:/docker-entrypoint-initdb.d/
+      - APP_DB_NAME=root
     ports:
       - 5432:5432
 
